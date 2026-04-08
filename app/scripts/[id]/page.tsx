@@ -10,7 +10,7 @@ import { NodeCanvas } from '@/components/canvas/NodeCanvas';
 import { SidePanel } from '@/components/panel/SidePanel';
 import { Spinner } from '@/components/ui/Spinner';
 import { Button } from '@/components/ui/Button';
-import { ChevronLeft, Save } from 'lucide-react';
+import { ChevronLeft, Save, Download } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ScriptEditorPage({ params }: { params: Promise<{ id: string }> }) {
@@ -61,6 +61,19 @@ export default function ScriptEditorPage({ params }: { params: Promise<{ id: str
           />
         </div>
         <div className="flex items-center gap-3">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              const a = document.createElement('a');
+              a.href = `/api/export?scriptId=${id}`;
+              a.download = '';
+              a.click();
+            }}
+          >
+            <Download className="w-4 h-4 mr-2" />
+            Exportar .docx
+          </Button>
           <Button variant="outline" size="sm">
             <Save className="w-4 h-4 mr-2" />
             Guardado
