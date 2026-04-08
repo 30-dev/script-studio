@@ -99,7 +99,7 @@ export const NodeCard = ({
         <div className="flex items-center gap-2 mb-1">
           <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Escena</span>
           <input
-            className="flex-1 bg-transparent font-bold text-[#1A1A1A] focus:outline-none"
+            className="min-w-0 flex-1 bg-transparent font-bold text-[#1A1A1A] focus:outline-none truncate"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             onBlur={() => onUpdateTitle(node.id, title)}

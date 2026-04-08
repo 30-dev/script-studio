@@ -45,16 +45,11 @@ alter table scripts enable row level security;
 alter table nodes enable row level security;
 alter table blocks enable row level security;
 alter table edges enable row level security;
+alter table profiles enable row level security;
 
-create policy "users own scripts" on scripts for all using (auth.uid() = user_id);
-create policy "users own nodes" on nodes for all using (
-  script_id in (select id from scripts where user_id = auth.uid())
-);
-create policy "users own blocks" on blocks for all using (
-  node_id in (select id from nodes where script_id in (
-    select id from scripts where user_id = auth.uid()
-  ))
-);
-create policy "users own edges" on edges for all using (
-  script_id in (select id from scripts where user_id = auth.uid())
-);
+-- Cualquier usuario autenticado tiene acceso total a todo
+create policy "authenticated full access scripts" on scripts for all using (auth.role() = 'authenticated');
+create policy "authenticated full access nodes" on nodes for all using (auth.role() = 'authenticated');
+create policy "authenticated full access blocks" on blocks for all using (auth.role() = 'authenticated');
+create policy "authenticated full access edges" on edges for all using (auth.role() = 'authenticated');
+create policy "authenticated full access profiles" on profiles for all using (auth.role() = 'authenticated');
