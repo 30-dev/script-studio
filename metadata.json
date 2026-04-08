@@ -1,0 +1,5 @@
+{
+  "name": "Script Studio",
+  "description": "A node-based script editor for YouTube video production workflows with AI integration and DOCX import.",
+  "requestFramePermissions": []
+}

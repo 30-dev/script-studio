@@ -1,0 +1,10 @@
+// FILE: components/ui/Spinner.tsx
+import React from 'react';
+
+export const Spinner = ({ className = '' }: { className?: string }) => {
+  return (
+    <div className={`flex justify-center items-center ${className}`}>
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#7F77DD]"></div>
+    </div>
+  );
+};
